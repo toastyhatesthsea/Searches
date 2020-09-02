@@ -29,5 +29,30 @@ public class BinarySearch
         }
     }
 
+    public static <T extends Comparable> int searchWithLast(T[] a, int first, int last, int target)
+    {
+        int middle;
+
+        if (last <= 0 || last < first)
+        {
+            return -1;
+        }
+        else
+        {
+            middle = first + last / 2;
+            if (a[middle].compareTo(target) == 0)
+            {
+                return middle;
+            } else if (a[middle].compareTo(target) < 0)
+            {
+                return searchWithLast(a, first, last / 2, target);
+            }
+            else
+            {
+                return searchWithLast(a, middle + 1, (last - 1) / 2, target);
+            }
+        }
+    }
+
 
 }
