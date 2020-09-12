@@ -22,6 +22,35 @@ public class Table <K, E>
         hasBeenUsed = new boolean[sizeOfTable];
     }
 
+    public E put(K key, E element)
+    {
+        int index = findIndex(key);
+        E answer;
+
+        if (index != -1)
+        {
+            answer = (E) data[index];
+            data[index] = element;
+            return answer;
+        } else if (amountOfItems < data.length)
+        {
+            index = hash(key);
+            while (keys[index] != null)
+            {
+                index = nextIndex(index);
+            }
+            keys[index] = key;
+            data[index] = element;
+            hasBeenUsed[index] = true;
+            amountOfItems++;
+            return null;
+        }
+        else
+        {
+            throw new IllegalStateException("Table is full");
+        }
+    }
+
     public boolean containsKey(K key)
     {
         int answer = findIndex(key);
