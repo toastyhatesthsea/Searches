@@ -100,7 +100,7 @@ public class Table <K, E>
 
 }
 
-class TableTester
+class Meowmix
 {
     public static void main(String[] sdfsdfsdfa)
     {
@@ -112,5 +112,14 @@ class TableTester
         int total = Math.abs(aString.hashCode()) % sizeOfTable;
 
         total = 101 % sizeOfTable;
+
+        thing.put(aString, "123");
+
+        boolean answer = thing.containsKey("I love t");
     }
+}
+
+class TableTester
+{
+
 }
